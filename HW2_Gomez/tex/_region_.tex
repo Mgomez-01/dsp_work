@@ -1,0 +1,89 @@
+\message{ !name(main.tex)}\documentclass[a4paper, 11pt]{exam}
+\usepackage[T1]{fontenc}
+\usepackage{titling}
+\usepackage{url}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{courier}
+\usepackage{textcomp}
+\usepackage{circuitikz}
+\usepackage{tikz}
+\usepackage{enumitem }
+\usepackage{karnaugh-map}
+\usepackage{bytefield}
+\usepackage{mathrsfs}
+\usepackage{cancel}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{hyperref}
+
+\newcommand{\invlaplace}[1]{%
+\mathscr{L}^{-1}\left\{#1\right\}
+}
+\newcommand{\laplace}[1]{%
+\mathscr{L}\left\{#1\right\}
+}
+\newcommand{\fourier}[1]{%
+\mathscr{F}\left\{#1\right\}
+}
+
+\newcommand{\ztransform}[1]{%
+\mathscr{Z}\left\{#1\right\}
+}
+
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    }%
+}
+
+\usepackage{environ}
+
+\NewEnviron{eqnsection}[2]{%
+  \newcommand{\myvspace}{#1}%
+  \vspace{\myvspace}%
+  \begin{align*}
+  \intertext{#2}
+  \BODY
+  \end{align*}%
+  \vspace{\myvspace}%
+}
+
+
+\newcommand{\uparrowat}[1]{\underset{\uparrow}{#1}}
+
+
+\newlist{myenumerate}{enumerate}{2}
+\setlist[myenumerate,1]{label=\roman*)}
+\setlist[myenumerate,2]{label=\alph*)}
+
+
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+
+\title{Homework Assignment \#2}
+\subtitle{ECE 6530: Digital Signal Processing \\
+\today\\}
+\author{ Miguel Gomez U1318856\\
+\textbf{Homework set \#2}}
+\date{Due Date: Sep 14, 2023\\
+(100 points)}
+
+\begin{document}
+
+\message{ !name(main.tex) !offset(37) }
+ 41 
+\message{ !name(main.tex) !offset(61) }
+
+\end{document}
+
+
+
+
