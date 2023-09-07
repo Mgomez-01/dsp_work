@@ -1,0 +1,260 @@
+\documentclass[a4paper, 11pt]{exam}
+\usepackage[T1]{fontenc}
+\usepackage{titling}
+\usepackage{url}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{courier}
+\usepackage{textcomp}
+\usepackage{circuitikz}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{karnaugh-map}
+\usepackage{bytefield}
+\usepackage{mathrsfs}
+\usepackage{cancel}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{hyperref}
+
+\newcommand{\invlaplace}[1]{%
+\mathscr{L}^{-1}\left\{#1\right\}
+}
+\newcommand{\laplace}[1]{%
+\mathscr{L}\left\{#1\right\}
+}
+\newcommand{\fourier}[1]{%
+\mathscr{F}\left\{#1\right\}
+}
+
+\newcommand{\ztransform}[1]{%
+\mathscr{Z}\left\{#1\right\}
+}
+
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    }%
+}
+
+\usepackage{environ}
+
+\NewEnviron{eqnsection}[2]{%
+  \newcommand{\myvspace}{#1}%
+  \vspace{\myvspace}%
+  \begin{align*}
+  \intertext{#2}
+  \BODY
+  \end{align*}%
+  \vspace{\myvspace}%
+}
+
+
+
+\newlist{myenumerate}{enumerate}{2}
+\setlist[myenumerate,1]{label=\roman*)}
+\setlist[myenumerate,2]{label=\alph*)}
+
+
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+
+\title{Homework Assignment \#1}
+\subtitle{ECE 6530: Digital Signal Processing \\
+\today\\}
+\author{ Miguel Gomez U1318856\\
+\textbf{Homework set \#1}}
+\date{Due Date: Sep 1, 2023\\
+(100 points)}
+
+\begin{document}
+\maketitle
+\noindent
+\section{}
+1.3 - Determine whether or not each of the following signals is periodic. In case a signal is periodic, specify its fundamental period.
+\begin{enumerate}
+    \item $x_a(t) = 3cos(5t + \frac{\pi}{6})$
+    \item $x(n)   = 3cos(5n + \frac{\pi}{6})$
+    \item $x(n)   = 2e^{j(\frac{n}{6} - \pi)}$
+    \item $x(n)   = cos(\frac{n}{8})cos(\frac{n\pi}{8})$
+    \item $x(n)   = cos(\pi \frac{n}{2}) - sin(\pi \frac{n}{8}) + 3cos(\pi \frac{n}{4} + \frac{\pi}{3})$
+\end{enumerate}
+\hrule 
+\text{}\\
+Determining periodicity requires us to examine the following:
+\begin{equation}
+    x_a(t) = x_a(t+T)
+\end{equation}
+\begin{equation}
+    x(n) = x(n+N)
+\end{equation}
+
+\begin{eqnsection}{-3em}{a) Consider the following expression to determine if $x_a(t)$ is periodic:}
+    \intertext{We can expand $x_a(t + T) $ as follows:}
+    x_a(t + T) &= 3\cos\left(5(t + T) + \frac{\pi}{6}\right) \\
+    &= 3\cos\left(5t +5T + \frac{\pi}{6}\right) \\
+    \intertext{We know that $ 2\pi ft = 5t $, so $ f = \frac{5}{2\pi} $ and $ T = \frac{2\pi}{5} $.}
+    x_a(t + T) &= 3\cos\left(5t +\textcolor{red}{\cancelto{\textcolor{black}{2\pi}}{\textcolor{black}{5\frac{2\pi}{5}}}} + \frac{\pi}{6}\right) \\
+    &= 3\cos\left(\textcolor{red}{\cancel{\textcolor{black}{2\pi}}} + \left(5t + \frac{\pi}{6}\right)\right) = 3cos\left(5t + \frac{\pi}{6}\right)\\
+    \intertext{The addition of $ 2\pi $ is redundant since it represents a full rotation. Therefore, $ x_a(t + T) = x_a(t) $ and $ x_a(t) $ is periodic.}
+\end{eqnsection}
+\newpage
+\begin{equation*}
+    x(n) = 3cos\left(5n + \frac{\pi}{6}\right)
+\end{equation*}
+\vspace{1em}\\
+
+\begin{eqnsection}{-3em}{b) Consider the expression to determine if $x(n)$ is periodic:}
+    \intertext{We can expand $x(n + N)$ as follows:}
+ x(n+N) &= 3\cos\left(5n + 5N + \frac{\pi}{6}\right) \\
+ \intertext{For a discrete signal, the frequency is defined as $f_0 = \frac{k}{N}$:}
+ \intertext{since $2\pi f_0n = 5n \ \ \ f_0 = \frac{5}{2\pi} \ \ \ T = \frac{2\pi}{5}$}
+ \intertext{We can stop here since we know a discrete-time signal is only periodic if the frequency $f_0$ can be expressed as a ratio of two integers. Since there is a factor of $\pi$ in the expression, this is aperiodic.}
+\end{eqnsection} 
+\vspace{1em}\\
+\begin{eqnsection}{-3em}{c) Consider the following equations to determine if $x(n)$ is periodic:}
+    x(n) &= 2e^{j\left(\frac{n}{6} - \pi\right)} = 2e^{-j\pi}e^{\frac{n}{6}} \\
+    \intertext{A phase shift not dependent on n does not change the periodicity:}
+    &= 2e^{\frac{n}{6}} = 2\left(cos\left(\frac{n}{6}\right) + jsin\left(\frac{n}{6}\right)\right) \\
+    \intertext{since $2\pi f_0n = \frac{n}{6} \ \ \ f_0 = \frac{1}{12\pi} \ \ \ T = 12\pi$}
+    \intertext{Again, we can stop here since we know a discrete-time signal is only periodic if the frequency $f_0$ can be expressed as a ratio of two integers. Since there is a factor of $\pi$ in the expression, this is aperiodic.}
+\end{eqnsection}
+\vspace{1em}\\
+\begin{eqnsection}{-3em}{d) Consider the following equations to determine if $x(n)$ is periodic:}
+    x(n) &= cos\left(\frac{n}{8}\right)cos\left(\frac{n\pi}{8}\right)\\
+    \intertext{We have two frequencies to evaluate, $f_{0_0} = \frac{n}{8}$ and $f_{0_1} = \frac{\pi n}{8}$:}
+\intertext{since $2\pi f_{0_i}n = \left[\frac{n}{8} , \frac{n\pi}{8}\right] \ \ \ f_{0_i} = \left[\frac{1}{16\pi} , \frac{1}{16}\right]  \ \ \ T_i = [16\pi, 16]$}
+\intertext{While we came up with one expression for $f_{0_i}$ that is rational, the other one is not. $\therefore$ the overall signal will be aperiodic.}
+\end{eqnsection}
+\vspace{1em}\\
+\begin{eqnsection}{-3em}{e) Consider the following equations to determine if $x(n)$ is periodic:}
+    x(n) = cos\left(\pi \frac{n}{2}\right) - sin\left(\pi \frac{n}{8}\right) + 3cos\left(\pi \frac{n}{4} + \frac{\pi}{3}\right)\\
+        \intertext{We have three frequencies to evaluate, $f_{0_0} = \frac{\pi n}{2}$, $f_{0_1} = \frac{\pi n}{8}$, and $f_{0_2} = \frac{\pi n}{4}$:}
+\intertext{since $2\pi f_{0_i}n = \left[\frac{\pi n}{2} , \frac{n\pi}{8} , \frac{n\pi}{4}\right] \ \ \ f_{0_i} = \left[\frac{1}{4} ,\frac{1}{16}, \frac{1}{8}\right]  \ \ \ T_i = [4, 16, 8]$}
+\intertext{Since the frequencies $f_{0_i}$ are all rational. The signal is periodic with $f_0 = \frac{1}{16}$.}
+\end{eqnsection}
+\vspace{1em}\\
+\noindent
+\section{}
+1.7 An analog signal contains frequencies up to 10 kHz.
+
+\begin{enumerate}
+    \item What range of sampling frequencies allows exact reconstruction of this signal
+from its samples?
+    \item Suppose that we sample this signal with a sampling frequency Fs = 8 kHz.
+Examine what happens to the frequency F1 = 5 kHz.
+    \item Repeat part (b) for a frequency F2 = 9 kHz.
+\end{enumerate}
+\hrule
+\vspace{3em}
+\begin{eqnsection}{-3em}{a) What range of sampling frequencies allows exact reconstruction of this signal from its samples?}
+\intertext{By $F_s > 2F_{max}$ we can find the range of frequencies:}
+-\frac{F_s}{2} \leq F_{max} \leq \frac{F_s}{2}\\
+-\frac{F_s}{2} \leq 10kHz \leq \frac{F_s}{2} \\
+-F_s \leq 20kHz \leq F_s \\
+\intertext{$\therefore$ the range is up to |20kHz|}
+\end{eqnsection}
+
+\begin{eqnsection}{-3em}{b and c) Suppose that we sample this signal with a sampling frequency Fs = 8 kHz. Examine what happens to the frequency F1 = 5 kHz. Repeat part (b) for a frequency F2 = 9 kHz.}
+    \intertext{Sampling the signals if they are outside the range we found, at this frequency, would give us a mapping from that frequency to one within our range.}
+    F_s = \left[5\ 9\right]kHz
+    \intertext{looking at what happens in the outputted frequencies will show:}
+        F_i\ mod (F_N) &\rightarrow{} F_i - F_N - F_N \ \ \  \text{i.f.f.}\ \ F_i > F_N\\
+     else\  F_i\ mod (F_N)&\rightarrow{} F_i \ \ \  \text{if}\ \ F_i < F_N\\ 
+     \intertext{This will give the mapping of the frequencies and our $F_N = \frac{{F_{s}}}{2} = 4kHz$:}
+     F_i\ mod (F_N) = \left[5\ 9\right]kHz\\
+     \intertext{Both 5 and 9 kHz are above the maximum frequency we can capture, $\therefore F_i > F_N$}
+      = \left[5\ 9\right]kHz - 2F_N \\
+     = \left[-3\ \ -1\right]kHz \\
+     \intertext{$\therefore$ both frequencies are mapped to others within the range.}
+\end{eqnsection}
+
+
+\section{}
+1.9 - An analog signal $x_a(t) = sin(480\pi t) + 3 sin(720\pi t)$ is sampled 600 times per second.
+
+\begin{enumerate}
+    \item Determine the Nyquist sampling rate for $x_a(t)$.
+    \item Determine the folding frequency.
+    \item What are the frequencies, in radians, in the resulting discrete time signal $x(n)$?
+    \item If $x(n)$ is passed through an ideal D/A converter, what is the reconstructed signal
+$y_a(t)$?
+\end{enumerate}
+\vspace{3em}\hrule
+\begin{eqnsection}{-3em}{a and b) Determine the Nyquist sampling rate for $x_a(t)$.}
+    \intertext{$F_{max}$ of $360Hz$ gives a Nyquist rate of $2F_{max} = 720Hz$}
+    \intertext{sampling at $600Hz$ gives a Folding Freq of $\frac{F_s}{2} = 300Hz$}
+\end{eqnsection}
+\begin{eqnsection}{-3em}{What are the frequencies, in radians, in the resulting discrete time signal $x(n)$?}
+    F_i &= \left[240\ 360\right]\\
+    F_1 &= 240\ \  F_1 < F_N \rightarrow{} F_1 = 240\\
+    F_2 &= 360\ \  F_2 > F_N \rightarrow{} F_2 = 60 - 300 = -240\\ 
+    \intertext{$\therefore$ 360 maps to -240}
+    F_i &= \pm(2\pi240) = \pm(480\pi)\\
+\end{eqnsection}
+\newpage
+\begin{eqnsection}{-3em}{If $x(n)$ is passed through an ideal D/A converter, what is the reconstructed signal $y_a(t)$?}
+    x_a(t) &= sin(480\pi t) + 3 sin(720\pi t)\\
+    y_a(t) &= sin(480\pi t) + 3 sin(-480\pi t)\\
+    y_a(t) &= sin(480\pi t) - 3 sin(480\pi t)\\
+    y_a(t) &= - 2 sin(480\pi t)    
+\end{eqnsection}
+\vspace{2em}
+\hrule
+\section{}
+1.10 - A digital communication link carries binary-coded words representing samples of an
+input signal:
+\begin{equation*}
+    x_a(t) = 3 cos(600\pi t) + 2 cos(1800\pi t)
+\end{equation*}
+The link is operated at 10,000 bits/s, and each input sample is quantized into 1024
+different voltage levels.
+
+\begin{enumerate}
+  \item What are the sampling frequency and the folding frequency?
+  \item What is the Nyquist rate for the signal $x_a(t)$?
+  \item What are the frequencies in the resulting discrete-time signal $x(n)$?
+  \item What is the resolution $\Delta$?
+\end{enumerate}
+\hrule
+\vspace{3em}
+\begin{eqnsection}{-3em}{What are the sampling frequency and the folding frequency?}
+    \intertext{To find this, we need to use the 1024 levels as a clue. With bits of data, we use the set $B = \{0\ 1\}$, meaning we need to use the $log_2$ function to find the number of bits we need to represent the data:}
+    log_2(1024) &= 10\\ 
+    \intertext{With this number of bits, we can divide the operating rate by this to find the frequency of captures.}
+    BPS &= rate*bits \\
+    rate &= F_s = \frac{BPS}{bits} = \frac{1\textcolor{red}{\cancel{\textcolor{black}{0}}}k\textcolor{red}{\cancel{\textcolor{black}{B}}}}{s\textcolor{red}{\cancel{\textcolor{black}{10B}}}} = \frac{1k}{s} = 1kHz \\ 
+    F_f &= \frac{F_s}{2} = 500Hz
+\end{eqnsection}
+\newpage
+\begin{eqnsection}{-3em}{What is the Nyquist rate for the signal $x_a(t)?$}
+    \intertext{The signal has a max $\omega_i$ of $1800\pi$:}
+    1800\pi &= 2\pi900 \\ 
+    \therefore \text{Nyquist rate} &= 2F_{max} = 1800Hz
+\end{eqnsection}
+\vspace{2em}\\
+\begin{eqnsection}{-3em}{What are the frequencies in the resulting discrete-time signal $x(n)$?}
+    \intertext{Frequencies in the signal would be:}
+    f_i &= \left[300\ \ 900\right]Hz\\
+    f_{i_n} &= \frac{f_i n}{f_f} = \left[\frac{300n}{500}\ \ \frac{900n}{500}\right]Hz\\
+    &= \left[\frac{3n}{5}\ \ \frac{-1n}{5}\right]Hz\\
+    \therefore \omega_i &= \left[-\frac{1\pi n}{5}\ \ \frac{3\pi n}{5}\right]\\
+\end{eqnsection}
+\begin{eqnsection}{-3em}{What is the resolution $\Delta$?}
+    \intertext{$\Delta$ represents the quantization of the signal using the number of levels we have available to us. Additionally, we need to find the min and max of the signal we have.}
+    f_i &= \left[300\ \ 900\right]Hz\\
+   2\pi f_i &= \left[2\pi300\ \ 2\pi900\right] = \left[2\pi300\ \ 3(2\pi300)\right]
+   \intertext{Note: the second frequency here is an integer multiple of the first. $\therefore$ the max will happen at the same time every other rotation. by adding a phaseshift of $\pi$ to both would make the min line up in the signal as well.}
+   \therefore x_{max} &= 3 + 2 = 5\\
+   x_{min} &= -3 + -2 = -5\\ 
+   \Delta &= \frac{x_{max} - x_{min}}{L - 1} = \frac{5 - (-5)}{1024 - 1} \approx 9.8e^{-3}V \\ \therefore \Delta &= 9.8mV
+\end{eqnsection}
+
+\end{document}
