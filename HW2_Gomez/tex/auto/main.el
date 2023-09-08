@@ -36,7 +36,6 @@
     "circuitikz"
     "tikz"
     "enumitem"
-    ""
     "karnaugh-map"
     "bytefield"
     "mathrsfs"

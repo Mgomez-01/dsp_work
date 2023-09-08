@@ -13,14 +13,13 @@
 \usepackage{textcomp}
 \usepackage{circuitikz}
 \usepackage{tikz}
-\usepackage{enumitem }
+\usepackage{enumitem}
 \usepackage{karnaugh-map}
 \usepackage{bytefield}
 \usepackage{mathrsfs}
 \usepackage{cancel}
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage{hyperref}
-
 \newcommand{\invlaplace}[1]{%
 \mathscr{L}^{-1}\left\{#1\right\}
 }
@@ -97,17 +96,19 @@ by \\ truncation.
   x_1 (n) &= \lbrace-1, \uparrowat{2}, 1\rbrace \quad \overset{\text{$\mathcal{T}$}}{\longleftrightarrow}\quad y_1(n)=\lbrace1,\uparrowat{2},-1,0,1\rbrace \\
   x_2 (n) &= \lbrace−1, \uparrowat{-1}, -1\rbrace \quad \overset{\text{$\mathcal{T}$}}{\longleftrightarrow}\quad y_2(n)=\lbrace-1,\uparrowat{1},0,2\rbrace \\
   x_3 (n) &= \lbrace0, \uparrowat{1}, 1\rbrace \quad \overset{\text{$\mathcal{T}$}}{\longleftrightarrow}\quad y_3(n)=\lbrace\uparrowat{1},2,1\rbrace \\
-   \intertext{Can we draw any conclusions regarding the linearity of the system. What is the impulse response of the system?}
  \end{eqnsection}
  \newpage
-\vspace{2em}
+ \begin{eqnsection}{0em}{Can you draw any conclusions about the time invariance of this system?}
+   x_1 (n) + x_2 (n) &=  \lbrace-1, \textcolor{red}{\uparrowat{2}}, 1\rbrace + \lbrace−1, \textcolor{blue}{\uparrowat{-1}}, -1\rbrace\\
+   y_1 (n) + y_2 (n) &= \lbrace1,\textcolor{red}{\uparrowat{2}},-1,0,1\rbrace + \lbrace-1,\textcolor{blue}{\uparrowat{1}},0,2\rbrace \\
+   \intertext{Since the red match, we would expect the blue to match as well if they are time invariant. Since they do not, it tells us there is some relationship other than the impulse going on.}
+ \end{eqnsection}
 \hrule
 \section{} 
 2.16 - Problem 2.16 part (b3) and (b11) (10 points)
 \newline
-\newline
 \begin{enumerate}
-\item If $y(n) = x(n) \ast h(n)$, show that $\sum_y = \sum_k\sum_h$, where $\sum_x = \sum_{-\infty}^{\infty}x(n)$.
+\item If $y(n) = x(n) \ast h(n)$, show that $\sum_y = \sum_x\sum_h$, where $\sum_x = \sum_{-\infty}^{\infty}x(n)$.
 \item Compute the convolution $y(n) = x(n) \ast h(n)$ of the following signals and check the \\ correctness of the results by using the test in ($a$).
 \end{enumerate}
 
@@ -116,6 +117,123 @@ by \\ truncation.
   \item  [b11)] $x(n) =\left(\frac{1}{2}\right)^n u(n)$, $ h(n) =\left( \frac{1}{4}\right)^n u(n)$
 \end{enumerate}
 \hrule
+\vspace{1em}
+b3) Convolution of discrete systems can be done by matrix multiplication:
+\begin{center}
+\[
+\begin{bmatrix}
+x[0]&0&0&0\\
+x[1]&x[0]&0&0\\
+x[2]&x[1]&x[0]&0\\
+x[3]&x[2]&x[1]&x[0]\\
+x[4]&x[3]&x[2]&x[1]\\
+0&x[4]&x[3]&x[2]\\
+0&0&x[4]&x[3]\\
+0&0&0&x[4]\\
+
+\end{bmatrix} 
+\cdot
+\begin{bmatrix}
+h[0]\\
+h[1]\\
+h[2]\\
+h[3]
+\end{bmatrix}
+=
+\begin{bmatrix}
+y[0]\\
+y[1]\\
+y[2]\\
+y[3]\\
+y[4]\\
+y[5]\\
+y[6]\\
+y[7]\\
+\end{bmatrix}
+\]
+\end{center}
+\begin{center}
+\[
+\begin{bmatrix}
+0&0&0&0\\
+1&0&0&0\\
+-2&1&0&0\\
+3&-2&1&0\\
+-4&3&-2&1\\
+0&-4&3&-2\\
+0&0&-4&3\\
+0&0&0&-4\\
+
+\end{bmatrix} 
+\cdot
+\frac{1}{2}\begin{bmatrix}
+1\\
+1\\
+2\\
+1
+\end{bmatrix}
+=
+\frac{1}{2}
+\begin{bmatrix}
+0\\
+1\\
+-2 + 1\\
+3 -2 + 2\\
+-4 + 3 - 4 + 1\\
+-4 + 6 - 2\\
+-8 + 3\\
+-4\\
+\end{bmatrix}
+=
+\frac{1}{2}
+\begin{bmatrix}
+0\\
+1\\
+-1\\
+3\\
+-4\\
+0\\
+-5\\
+-4\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\
+\frac{1}{2}
+\\
+-\frac{1}{2}
+\\
+\frac{3}{2}\\
+-2\\
+0\\
+-\frac{5}{2}\\
+-2\\
+\end{bmatrix}
+\]
+\end{center}
+\begin{center}
+$y = \lbrace0,\frac{1}{2},-\frac{1}{2},\frac{3}{2},-2,0,-\frac{5}{2},-2 \rbrace$
+\end{center}
+\newpage
+\vspace{1em}
+\begin{eqnsection}{1em}{b11) can be done by expressing it as a sum:}
+  x(n) &= \left(\frac{1}{2}\right)^n u(n)\text{,}\  h(n) =\left(\frac{1}{4}\right)^n u(n)\\
+  x\ast h &= \sum_{k=-\infty}^{\infty}x(n)h(n-k)\ = \sum_{k=-\infty}^{\infty}h(k)x(n-k)\\
+    \intertext{Swapping the order of the convolution should not make a difference}
+    &= \sum_{k=-\infty}^{\infty}h(k)x(n-k) = \sum_{k=-\infty}^{\infty}\left(\frac{1}{4}\right)^k u(k)\left(\frac{1}{2}\right)^{(n-k)}u(n-k)\\
+    \intertext{Since the sum goes from $k$ and is bounded by $n$, we can absorb those into the sum:}
+    &= \sum_{k=0}^{n}\left(\frac{1}{4}\right)^k\left(\frac{1}{2}\right)^{(n-k)} = \sum_{k=0}^{n}\left(\left(\frac{1}{2}\right)^2\right)^k\left(\frac{1}{2}\right)^{(n-k)}\\
+    &= \sum_{k=0}^{n}\left(\frac{1}{2}\right)^{2k}\left(\frac{1}{2}\right)^{-k}\left(\frac{1}{2}\right)^{n} = \sum_{k=0}^{n}\left(\frac{1}{2}\right)^{n+k}\\
+    &= \left(\frac{1}{2}\right)^{n}\sum_{k=0}^{n}\left(\frac{1}{2}\right)^{k}\\
+    \intertext{By the expression for a finite sum:}
+    &= \sum_{k=1}^{n} = \frac{1-r^n}{1-r}\ \ \& \quad r = \frac{1}{2}\\
+    &=\left(\frac{1}{2}\right)^{n}\frac{1-\left(\frac{1}{2}\right)^n}{1-\left(\frac{1}{2}\right)}\\
+    &=\frac{\left(\frac{1}{2}\right)^{n}-\left(\frac{1}{2}\right)^{n}\left(\frac{1}{2}\right)^n}{\left(\frac{1}{2}\right)}\\
+    &=2\left(\left(\frac{1}{2}\right)^{n}-\left(\frac{1}{2}\right)^{2n}\right)\\
+    &=\left(\left(\frac{1}{2}\right)^{n+1}-\left(\frac{1}{2}\right)^{2n+1}\right)\\
+    \intertext{\textcolor{red}{Need to verify this. ask about my solution next week}}
+\end{eqnsection}
+\newpage
 \section{}
 2.24 - Problem 2.24. (10 points)\\
 \begin{eqnsection}{-2em}{The discrete-time system:}
