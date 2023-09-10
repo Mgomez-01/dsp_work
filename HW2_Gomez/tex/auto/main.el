@@ -47,9 +47,11 @@
     '("tab" ["argument"] 0)
     '("uparrowat" 1)
     '("subtitle" 1)
+    '("wfbrac" 1)
     '("ztransform" 1)
     '("fourier" 1)
     '("laplace" 1)
+    '("cc" 2)
     '("invlaplace" 1)
     "myvspace")
    (LaTeX-add-labels
