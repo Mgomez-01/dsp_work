@@ -90,6 +90,7 @@
 \item $y(n) = $Trun$[x(n)]$ where Trun$[x(n)]$ denotes the integer part of $x(n)$, obtained
 by \\ truncation.
 \end{enumerate}
+\newpage
 \section{}
 2.11 - Problem 2.11 (10 points)
 \begin{eqnsection}{3em}{The following input–output pairs have been observed during the operation of a linear system:}
@@ -226,31 +227,75 @@ $y = \lbrace0,\frac{1}{2},-\frac{1}{2},\frac{3}{2},-2,0,-\frac{5}{2},-2 \rbrace$
     &= \sum_{k=0}^{n}\left(\frac{1}{2}\right)^{2k}\left(\frac{1}{2}\right)^{-k}\left(\frac{1}{2}\right)^{n} = \sum_{k=0}^{n}\left(\frac{1}{2}\right)^{n+k}\\
     &= \left(\frac{1}{2}\right)^{n}\sum_{k=0}^{n}\left(\frac{1}{2}\right)^{k}\\
     \intertext{By the expression for a finite sum:}
-    &= \sum_{k=1}^{n} = \frac{1-r^n}{1-r}\ \ \& \quad r = \frac{1}{2}\\
-    &=\left(\frac{1}{2}\right)^{n}\frac{1-\left(\frac{1}{2}\right)^n}{1-\left(\frac{1}{2}\right)}\\
-    &=\frac{\left(\frac{1}{2}\right)^{n}-\left(\frac{1}{2}\right)^{n}\left(\frac{1}{2}\right)^n}{\left(\frac{1}{2}\right)}\\
-    &=2\left(\left(\frac{1}{2}\right)^{n}-\left(\frac{1}{2}\right)^{2n}\right)\\
-    &=\left(\left(\frac{1}{2}\right)^{n+1}-\left(\frac{1}{2}\right)^{2n+1}\right)\\
-    \intertext{\textcolor{red}{Need to verify this. ask about my solution next week}}
+    &= \sum_{k=1}^{n} = a\frac{1-r^n}{1-r}\ \ \& \quad r = \frac{1}{2}\\
+    &=\left(\frac{1}{2}\right)^{n}a\frac{1-\left(\frac{1}{2}\right)^n}{1-\left(\frac{1}{2}\right)}\\
+    &=a\frac{\left(\frac{1}{2}\right)^{n}-\left(\frac{1}{2}\right)^{n}\left(\frac{1}{2}\right)^n}{\left(\frac{1}{2}\right)}\\
+    &=2a\left(\left(\frac{1}{2}\right)^{n}-\left(\frac{1}{2}\right)^{2n}\right)\\
+    &=a\left(\left(\frac{1}{2}\right)^{n-1}-\left(\frac{1}{2}\right)^{2n-1}\right)\\
+    &=a\left(\left(\frac{1}{2}\right)^{n-1}-\left(\frac{1}{2}\right)^{2n-1}\right)\\
+    \left(\frac{1}{2}\right)^{n}\sum_{k=0}^{n}\left(\frac{1}{2}\right)^{k} &= \frac{a}{2}\left(2\left(\frac{1}{2}\right)^{n}-2\left(\frac{1}{2}\right)^{2n}\right)\\
+    \left(\frac{1}{2}\right)^{n}\sum_{k=0}^{n}\left(\frac{1}{2}\right)^{k} &= a\left(\left(\frac{1}{2}\right)^{n}-\left(\frac{1}{4}\right)^{n}\right)\\
+    \intertext{This started at $k = 0$ when the sum should start at 1 to be equal to the sum at the top. so the term for $a$ is just 1.}
+    &= \left(\left(\frac{1}{2}\right)^{n}-\left(\frac{1}{4}\right)^{n}\right)u(n)
+  \end{eqnsection}
+  It seems that there is a factor of two missing in my work since the expression should have another 2 on the first term. Essentially making that term have an $n - 1$ in the exponent. Perhaps because the finite sum formula begins at 1 instead and ours begins at 0?
+\begin{eqnsection}{0em}{verifying b3 with sums from a:}
+  \sum_y = \sum_x\sum_h \quad\text{, where }  \quad \sum_x &= \sum_{-\infty}^{\infty}x(n) \\
+  x(n) &= \left\lbrace0, 1, -2, 3, -4\right\rbrace\ \text{, } h(n) = \left\lbrace \frac{1}{2} , \frac{1}{2} , 1, \frac{1}{2} \right\rbrace \\
+  \sum_x &= \sum\left\lbrace0, 1, -2, 3, -4\right\rbrace = -2 \\
+  \sum_h &= \sum\left\lbrace \frac{1}{2} , \frac{1}{2} , 1, \frac{1}{2} \right\rbrace = \frac{5}{2} \\
+  \sum_y = \sum_x\sum_h = \frac{5}{2} \cdot (-2) &= -5\\
+  \sum_y = \sum\lbrace0,\frac{1}{2},-\frac{1}{2},\frac{3}{2},-2,0,-\frac{5}{2},-2 \rbrace &= -5 \\
 \end{eqnsection}
-\newpage
-\begin{eqnsection}{1em}{Verifying using $\sum_y = \sum_x\sum_h$, where $\sum_x = \sum_{-\infty}^{\infty}x(n)$}
+\begin{eqnsection}{-2em}{Verifying b11 using $\sum_y = \sum_x\sum_h$, where $\sum_x = \sum_{-\infty}^{\infty}x(n)$}
   \sum_y = \sum_x\sum_h \quad\text{, where }  \quad \sum_x = \sum_{-\infty}^{\infty}x(n) \\
 \end{eqnsection}
+\newpage
 \section{}
 2.24 - Problem 2.24. (10 points)\\
 \begin{eqnsection}{-2em}{The discrete-time system:}
-  y(n) = ny(n - 1) + x(n)\text{,}\quad\ \ \ n \ge 0
+  y(n) = ny(n - 1) + x(n)\text{,}\quad&\ \ \ n \ge 0
     \intertext{:is at rest [i.e., $y(−1) = 0$]. Check if the system is linear time invariant and BIBO stable.}
-\end{eqnsection}
+    y_1(n) + y_2(n) = ny_1(n - 1) &+ x_1(n) +  ny_2(n - 1) + x_2(n) \\
+    y_1(n) + y_2(n) = ny_1(n - 1) +  ny_2(n - 1) &+ x_1(n) + x_2(n) \\
+    y_1(n) + y_2(n) = n(y_1(n - 1) +  y_2(n - 1)) &+ (x_1(n) + x_2(n)) \\
+    \intertext{$\therefore $ system is linear:}
+    x(n-1) \rightarrow{} y(n-1) &= (n-1)y(n-1 -1) + x(n-1)\\
+    n' &= n-1\\
+    x(n-1) \rightarrow{} y(n-1) &= n'y(n'-1) + x(n')\\
+    \intertext{$\therefore $ system is time-invariant. Giving the following is a bounded input:}
+    x(n) &= u(n) \leq 1 \quad \forall n \geq 0\\
+    \intertext{The following should be bounded as well:}
+   y(1) &=  (1)y(0) + 1\\
+   y(0) &=  -1\\
+   y(2) &=  0 + 1\\
+   y(3) &= 3y(2) + 1 = 4\\
+   \intertext{This continues to increase and $\therefore $ it is unbounded.}
+  \end{eqnsection}
 \vspace{2em}
 \hrule
 \section{}
 2.27 - Problem 2.27. Determine the homogeneous, particular and total solutions. (15 points)\\
-\begin{eqnsection}{-3em}{Determine the particular solution of the difference equation:}
+\begin{eqnsection}{-1em}{Determine the particular solution of the difference equation:}
   y(n) = \frac{5}{6}y(n-1)-\frac{1}{6}y(n-2) + x(n)\\
-    \intertext{when the forcing function is $x(n) = 2 u(n)$.}
+  \intertext{when the forcing function is $x(n) = 2 u(n)$.}
 \end{eqnsection}
+\newpage
+\begin{eqnsection}{0em}{}
+  y_h(n) &= \lambda^nu(n)\\
+  \lambda^{n} &= \frac{5}{6}\lambda^{n-1}-\frac{1}{6}\lambda^{n-1}\\
+  \lambda^{n} -\frac{5}{6}\lambda^{n-1}+\frac{1}{6}\lambda^{n-2}&= 0\\
+  \lambda^{2}\lambda^{n-2} -\frac{5}{6}\lambda^{n-2}\lambda+\frac{1}{6}\lambda^{n-2}&= 0\\
+  \lambda^{n-2}\left(\lambda^{2} -\frac{5}{6}\lambda+\frac{1}{6}\right) &= 0\\
+  \lambda^{2} -\frac{5}{2\ 3}\lambda+\frac{1}{2\ 3} &= 0 \\
+  \left(\lambda - \frac{1}{2}\right)\left(\lambda - \frac{1}{3}\right) &= 0\\
+\end{eqnsection}
+\[
+  r = 
+\begin{bmatrix}
+\frac{1}{2}&\frac{1}{3}\\
+\end{bmatrix}  
+\]
 \vspace{2em}
 \hrule
 \section{}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.8.5)  8 SEP 2023 10:43
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.8.5)  10 SEP 2023 11:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1019,36 +1019,35 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 80
 
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-)
-Missing character: There is no – ("2013) in font ec-lmr10!
-Missing character: There is no − ("2212) in font cmr10!
-Missing character: There is no – ("2013) in font ec-lmr10!
-Missing character: There is no − ("2212) in font cmr10!
-[1
+) [1
 
 ]
+Missing character: There is no – ("2013) in font ec-lmr10!
+Missing character: There is no − ("2212) in font cmr10!
+Missing character: There is no – ("2013) in font ec-lmr10!
+Missing character: There is no − ("2212) in font cmr10!
+[2]
 Missing character: There is no − ("2212) in font cmr10!
 Missing character: There is no − ("2212) in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--111
+Underfull \hbox (badness 10000) in paragraph at lines 109--112
 
  []
 
-[2] [3]
+[3] [4] [5]
 Missing character: There is no − ("2212) in font cmr10!
 Missing character: There is no − ("2212) in font cmr10!
-
-Underfull \hbox (badness 10000) in paragraph at lines 272--275
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 317--320
 
  []
 
-[4]
 File: figures/fig49.png Graphic file (type bmp)
 <figures/fig49.png>
- [5]
+[7]
 File: figures/fig52.png Graphic file (type bmp)
 <figures/fig52.png>
- [6]
+ [8]
 This exam contains 0 questions with 0 parts, 0 subparts, and 0 subsubparts.
 (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
@@ -1061,6 +1060,6 @@ Here is how much of TeX's memory you used:
  59391 multiletter control sequences out of 15000+600000
  501267 words of font info for 70 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 103i,15n,105p,668b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 103i,15n,105p,668b,359s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (6 pages).
+Output written on main.pdf (8 pages).
