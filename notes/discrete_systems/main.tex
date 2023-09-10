@@ -93,14 +93,13 @@
     \tikzstyle{sum} = [draw, shape=circle, node distance=3.5cm];
     \tikzstyle{input} = [coordinate];
     \tikzstyle{output} = [coordinate];
-    \tikzstyle{time_delay} = \node [block, node distance=3cm] (block2) {$Z^{-1}$};
+    \tikzstyle{time_delay} = \node [block, node distance=3cm] (name) {$Z^{-1}$};
     
     % Nodes
     \node [input, name=input] {};
     \node [block, right of=input, node distance=2cm] (block1) {$Z^{-1}$};
     \node [block, right of=block1, node distance=3cm] (block2) {$Z^{-1}$};
     \node [output, right of=block2, node distance=2cm] (output) {};
-    \draw time_delay;
 
     % Paths
     \draw [->] (input) -- node [name=x,above] {$x[n]$} (block1);
