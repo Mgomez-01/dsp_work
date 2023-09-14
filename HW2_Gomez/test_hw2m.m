@@ -41,34 +41,44 @@ for i = 1:1:3
     pause(.5)
 end
 
-%%
+%% Section with difference equations and their plots. these are implemented as functions below.
+% problem 4
 diff1_x = [diffeq1(x),x];
+figure
 plot(diff1_x)
 
 diff1_y = [diffeq1(y),y];
+figure
 plot(diff1_y)
 
 diff1_z = [diffeq1(z),z];
+figure
 plot(diff1_z)
 
-
-%%
+%% problem 5
 diff2_x = [diffeq2(x),x];
+figure
 plot(diff2_x)
 
 diff2_y = [diffeq2(y),y];
+figure
 plot(diff2_y)
 
 diff2_z = [diffeq2(z),z];
+figure
 plot(diff2_z)
-%%
+
+%% problem 6
 diff3_x = [diffeq3(x,100),x];
+figure
 plot(diff3_x)
 title('6 x')
 diff3_y = [diffeq3(y,100),y];
+figure
 plot(diff3_y)
 title('6 y')
 diff3_z = [diffeq3(z,100),z];
+figure
 plot(diff3_z)
 title('6 z')
 
