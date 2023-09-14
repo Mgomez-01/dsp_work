@@ -62,14 +62,15 @@ plot(diff2_y)
 diff2_z = [diffeq2(z),z];
 plot(diff2_z)
 %%
-diff3_x = [diffeq3(x),x];
+diff3_x = [diffeq3(x,100),x];
 plot(diff3_x)
-
-diff3_y = [diffeq3(y),y];
+title('6 x')
+diff3_y = [diffeq3(y,100),y];
 plot(diff3_y)
-
-diff3_z = [diffeq3(z),z];
+title('6 y')
+diff3_z = [diffeq3(z,100),z];
 plot(diff3_z)
+title('6 z')
 
 %% Functions below
 function a = convert(data)
@@ -123,11 +124,11 @@ function y = diffeq2(x)
     end
 end
 % implements the third diff eq from homework set
-function y = diffeq3(x)
+function y = diffeq3(x,t)
     y = zeros(size(x));
     y(1) = 0;
     y(2) = y(1) + x(2);
-    for n = 3:length(x)
+    for n = t:length(x)
         y(n) = y(n-1) - y(n-2) + x(n);
     end
 end
