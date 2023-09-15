@@ -1,4 +1,4 @@
-% implements the third diff eq from homework set
+% % implements the third diff eq from homework set
 function y = diffeq3(x,t)
     y = zeros(size(x));
     y(t+0) = 0;
