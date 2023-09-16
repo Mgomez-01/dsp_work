@@ -7,3 +7,4 @@ function y = diffeq3(x,t)
         y(n) = y(n-1) - y(n-2) + x(n);
     end
 end
+
