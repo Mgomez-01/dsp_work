@@ -1,103 +1,94 @@
-\documentclass[a4paper, 11pt]{exam}
-\usepackage[T1]{fontenc}
-\usepackage{titling}
-\usepackage{url}
-\usepackage{amsmath,amsthm,amssymb}
-\usepackage{graphicx}
-\usepackage{graphics}
-\usepackage{listings}
-\usepackage[dvipsnames]{xcolor}
-\usepackage{tabularx}
-\usepackage{ragged2e}
-\usepackage{courier}
-\usepackage{textcomp}
-\usepackage{circuitikz}
-\usepackage{tikz}
-\usepackage{enumitem}
-\usepackage{karnaugh-map}
-\usepackage{bytefield}
-\usepackage{mathrsfs}
-\usepackage{cancel}
-\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
-\usepackage{hyperref}
+* LaTeX Customizations for Org Mode
+This section contains all the LaTeX headers and custom commands for Org export.
+#+TITLE: Homework Assignment #3
+#+AUTHOR: Miguel Gomez U1318856
+#+DATE: 2023-09-21 00:24:34
+
+#+LATEX: \subtitle{ECE 6530: Digital Signal Processing \\
+\today\\}
+#+LATEX: \textbf{Homework set #3}
+
+#+LATEX_HEADER: \documentclass[a4paper, 11pt]{exam}
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \usepackage{url}
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amssymb}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{graphics}
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \usepackage[dvipsnames]{xcolor}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage{ragged2e}
+#+LATEX_HEADER: \usepackage{courier}
+#+LATEX_HEADER: \usepackage{textcomp}
+#+LATEX_HEADER: \usepackage{circuitikz}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \usepackage{karnaugh-map}
+#+LATEX_HEADER: \usepackage{bytefield}
+#+LATEX_HEADER: \usepackage{mathrsfs}
+#+LATEX_HEADER: \usepackage{cancel}
+#+LATEX_HEADER: \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \usepackage{environ}
+
+#+BEGIN_EXPORT latex
 \newcommand{\invlaplace}[1]{%
 \mathscr{L}^{-1}\left\{#1\right\}
 }
-
-\newcommand{\cc}[2]{
-  \textcolor{red}{\cancelto{\textcolor{black}{#2}}{\textcolor{black}{#1}}}
+\newcommand{\cc}[2]{%
+\textcolor{red}{\cancelto{\textcolor{black}{#2}}{\textcolor{black}{#1}}}
 }
-
 \newcommand{\laplace}[1]{%
 \mathscr{L}\left\{#1\right\}
 }
 \newcommand{\fourier}[1]{%
 \mathscr{F}\left\{#1\right\}
 }
-
 \newcommand{\ztransform}[1]{%
 \mathscr{Z}\left\{#1\right\}
 }
-
 \newcommand{\wfbrac}[1]{%
 \left[ \,#1\right] \,
 }
 \newcommand{\wfparen}[1]{%
 \left(#1\right)
 }
-
-\newcommand{\subtitle}[1]{%
-  \posttitle{%
-    \par\end{center}
-    \begin{center}\large#1\end{center}
-    }%
-}
-
-\usepackage{environ}
-
-\NewEnviron{eqnsection}[2]{%
-  \newcommand{\myvspace}{#1}%
-  \vspace{\myvspace}%
-  \begin{align*}
-  \intertext{#2}
-  \BODY
-  \end{align*}%
-  \vspace{\myvspace}%
-}
-
-
 \newcommand{\uparrowat}[1]{\underset{\uparrow}{#1}}
-
-
 \newlist{myenumerate}{enumerate}{2}
 \setlist[myenumerate,1]{label=\roman*)}
 \setlist[myenumerate,2]{label=\alph*)}
-
-
-
 \newcommand\tab[1][1cm]{\hspace*{#1}}
-
 \renewcommand{\labelenumi}{\alph{enumi})}
 
-\title{Homework Assignment \#3}
-\subtitle{ECE 6530: Digital Signal Processing \\
-\today\\}
-\author{ Miguel Gomez U1318856\\
-\textbf{Homework set \#3}}
-\date{Due Date: Sep 29, 2023\\
-(75 points)}
 
-\begin{document}
+\NewEnviron{eqnsection}[2]{%
+\newcommand{\myvspace}{#1}%
+\vspace{\myvspace}%
+\begin{align*}
+\intertext{#2}
+\BODY
+\end{align*}%
+\vspace{\myvspace}%
+#+END_EXPORT
+
+
+
+\[
+
+begin{document}
 \maketitle
 \section{Problem 3.2 parts a, b, d, f, and h}
 Determine the z-transform of the following signals and sketch the ROC of the following:
+
 \begin{enumerate}
 \item $x(n) = (1+n)u(n)$
 \item $x(n) = (a^{n} + a^{-n})u(n)$ real $a$
 \item $x(n) = (na^{n}\sin{\omega_0n})u(n)$
-\item $x(n) = Ar^n\cos{\wfparen{\omega_0n + \phi}}u(n)$
+\item $x(n) = Ar^n\cos{\omega_0n + \phi}u(n)$
 \item $x(n) = \wfbrac{\frac{1}{2}}^{n}[u(n)-u(n-10)]$
-\end{enumerate}
+\end{enumerate
+
 \begin{eqnsection}{0em}{Problem a can be split into two parts:}
   x(n) &= (1+n)u(n) = u(n) + nu(n)
   \intertext{The first is a simple one that we can solve by geometric sum. But we have a table in the book that has these simple cases so we can skip ahead a bit:}
@@ -109,13 +100,10 @@ Determine the z-transform of the following signals and sketch the ROC of the fol
   \intertext{The poles are clearly at 1 since a value of 1 for $z$ would cause the denominator to go to 0. The zeros would need us to multiply top and bottom by $z^{2}$.}
   X_{tot}(z)&=\wfbrac{\frac{z^2}{z^2(1-z^{-1})^2}}=\wfbrac{\frac{z^2}{(z-1)^2}} \\
   \intertext{This shows the zeros as well as the poles. both with multiplicity 2.}
-  x(n)\rightarrow{}X(z) \\
-  X(z) &= X_1(z) + X_2(z) \\
 \end{eqnsection}
 
-\newpage
 
-\section{Problem 3.3 a-d}
+
 \begin{enumerate}
 \item
 \[
@@ -136,7 +124,7 @@ x_2(n) =
 \item $x_3(n) = x_1(n+4)$
 \item $x_4(n) = x_1(-n)$
 \end{enumerate}
-\section{Problem 3.7}
+
 
 \end{document}
-  
+/]

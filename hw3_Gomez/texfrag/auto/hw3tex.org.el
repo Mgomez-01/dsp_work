@@ -1,10 +1,10 @@
 (TeX-add-style-hook
- "main"
+ "hw3tex.org"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-class-options
                      '(("exam" "a4paper" "11pt")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("fontenc" "T1") ("xcolor" "dvipsnames") ("algorithm2e" "linesnumbered" "ruled" "vlined")))
+                     '(("color" "usenames") ("fontenc" "T1") ("inputenc" "utf8") ("ulem" "normalem") ("xcolor" "dvipsnames") ("algorithm2e" "linesnumbered" "ruled" "vlined")))
    (add-to-list 'LaTeX-verbatim-environments-local "lstlisting")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "href")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
@@ -17,15 +17,20 @@
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
-    "exam"
-    "exam11"
+    "article"
+    "art10"
+    "color"
     "fontenc"
     "titling"
     "url"
     "amsmath"
     "amsthm"
     "amssymb"
+    "inputenc"
     "graphicx"
+    "ulem"
+    "exam"
+    "exam11"
     "graphics"
     "listings"
     "xcolor"
@@ -46,7 +51,6 @@
    (TeX-add-symbols
     '("tab" ["argument"] 0)
     '("uparrowat" 1)
-    '("subtitle" 1)
     '("wfparen" 1)
     '("wfbrac" 1)
     '("ztransform" 1)
