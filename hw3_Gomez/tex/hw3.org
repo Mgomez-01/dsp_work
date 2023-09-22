@@ -1,3 +1,7 @@
+* Org example of latex built from here
+
+#+begin_src tex
+
 \documentclass[a4paper, 11pt]{exam}
 \usepackage[T1]{fontenc}
 \usepackage{titling}
@@ -78,6 +82,8 @@
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 
 \renewcommand{\labelenumi}{\alph{enumi})}
+#+end_src
+\[
 
 \title{Homework Assignment \#3}
 \subtitle{ECE 6530: Digital Signal Processing \\
@@ -95,26 +101,9 @@ Determine the z-transform of the following signals and sketch the ROC of the fol
 \item $x(n) = (1+n)u(n)$
 \item $x(n) = (a^{n} + a^{-n})u(n)$ real $a$
 \item $x(n) = (na^{n}\sin{\omega_0n})u(n)$
-\item $x(n) = Ar^n\cos{\wfparen{\omega_0n + \phi}}u(n)$
+\item $x(n) = Ar^n\cos{\omega_0n + \phi}u(n)$
 \item $x(n) = \wfbrac{\frac{1}{2}}^{n}[u(n)-u(n-10)]$
 \end{enumerate}
-\begin{eqnsection}{0em}{Problem a can be split into two parts:}
-  x(n) &= (1+n)u(n) = u(n) + nu(n)
-  \intertext{The first is a simple one that we can solve by geometric sum. But we have a table in the book that has these simple cases so we can skip ahead a bit:}
-  X_{tot}(z) &= \wfbrac{\frac{1}{1-z^{-1}}} - z\frac{dX(z)}{dz} \\
-  X_{tot}(z)&= \wfbrac{\frac{1}{1-z^{-1}}} - z\wfbrac{\frac{-1}{(1-z^{-1})^2}}(z^{-2}) \\
-  X_{tot}(z)&= \wfbrac{\frac{1}{1-z^{-1}}} + \wfbrac{\frac{z^{-1}}{(1-z^{-1})^2}} \\
-  X_{tot}(z)&= \wfbrac{\frac{1-z^{-1}}{(1-z^{-1})^2}} + \wfbrac{\frac{z^{-1}}{(1-z^{-1})^2}} \\
-  X_{tot}(z)&=\wfbrac{\frac{1}{(1-z^{-1})^2}} \\
-  \intertext{The poles are clearly at 1 since a value of 1 for $z$ would cause the denominator to go to 0. The zeros would need us to multiply top and bottom by $z^{2}$.}
-  X_{tot}(z)&=\wfbrac{\frac{z^2}{z^2(1-z^{-1})^2}}=\wfbrac{\frac{z^2}{(z-1)^2}} \\
-  \intertext{This shows the zeros as well as the poles. both with multiplicity 2.}
-\begin{eqnsection}{1em}{a)}
-  x(n)\rightarrow{}X(z) \\
-  X(z) &= X_1(z) + X_2(z) \\
-\end{eqnsection}
-
-\newpage
 
 \section{Problem 3.3 a-d}
 \begin{enumerate}
@@ -139,5 +128,5 @@ x_2(n) =
 \end{enumerate}
 \section{Problem 3.7}
 
-\end{document}
- 
+\]
+
