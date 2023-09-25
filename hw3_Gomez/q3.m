@@ -5,7 +5,7 @@ x_n = a .^ n;
 [x, y] = meshgrid(linspace(-2, 2, 100), linspace(-2, 2, 100));
 z = x + 1i * y;
 
-X = arrayfun(@(zval) sum(x_n .* (zval .^ n)), z);
+X = arrayfun(@(zval) sum(x_n .* (zval .^ -n)), z);
 X(isnan(X(:))) = Inf;
 
 
