@@ -26,26 +26,20 @@
 \usepackage{tikz}
 \usetikzlibrary{patterns}
 \newcommand{\plotROC}[3]{
-  \begin{tikzpicture}
     % Draw the axes
     \draw[->] (-2.5,0) -- (2.5,0) node[anchor=north, xshift=.5cm, yshift=.3cm] {\( \text{Re}(z) \)};
     \draw[->] (0,-2.5) -- (0,2.5) node[anchor=east , xshift=.5cm, yshift=.2cm] {\( \text{Im}(z) \)};
-
-     % Draw the Legend
+    
+    % Draw the Legend
     \draw (2.5,2.5) rectangle (4,1.5);
     \fill[red] (2.8,1.7) circle [radius=.05];
     \node[anchor=west] at (2.9, 1.7) {Poles};
     \fill[black] (2.8,2.2) circle [radius=.05];
     \node[anchor=west] at (2.9, 2.2) {Zeros};
 
-    
     % Draw the circle with radius passed in
-    \draw[thick] (0,0) circle [radius=#1];
+    \draw[dashed] (0,0) circle [radius=#1];
     \node[anchor=west] at (#1/1.3, #1/1.3) {\( r = 1 \)};
-
-    % Fill the region outside the circle
-    \filldraw[pattern=north east lines, pattern color=blue, opacity=0.5] (-2.5,-2.5) rectangle (2.5,2.5);
-    \fill[white] (0,0) circle [radius=#1];
 
     % Plot poles
     \foreach \x/\y in {#2} {
@@ -61,8 +55,7 @@
     \node at (1.5,1.5) {ROC};
 
     % Draw the circle to indicate it's not part of the ROC
-    \draw[thick, dashed] (0,0) circle [radius=#1];
-  \end{tikzpicture}
+    \draw[dashed] (0,0) circle [radius=#1];
 }
 
 
@@ -154,7 +147,14 @@ Determine the z-transform of the following signals and sketch the ROC of the fol
   \intertext{This shows the zeros as well as the poles. both with multiplicity 2.}
 \end{eqnsection}
 \begin{center}
-\plotROC{1}{0/0}{1/0}
+\begin{tikzpicture}
+  \filldraw[pattern=north east lines, pattern color=blue, opacity=0.5] (-2.5,-2.5) rectangle (2.5,2.5);
+  \fill[white] (0,0) circle [radius=1];
+  \plotROC{1}{0/0}{1/0}
+  % Label the ROC
+  \node at (1.5,1.5) {ROC};
+  % Fill the region outside the circle
+\end{tikzpicture}
 \end{center}
 \newpage
 
