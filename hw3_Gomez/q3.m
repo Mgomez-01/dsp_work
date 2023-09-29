@@ -2,8 +2,8 @@ a = 0.6;
 n = 0:999;
 x_n = a .^ n;
 
-minimum = -2;
-maximum = 2;
+minimum = -4;
+maximum = 4;
 step_size = .01;
 n_step = (maximum - minimum)/step_size + 1;
 f = linspace(minimum,maximum,(n_step));
@@ -18,7 +18,7 @@ zvals = linspace(-2, 2, n_step);
 imagesc(zvals, zvals, abs(X));
 axis xy; axis square; grid on;
 title('|X(z)|, Z-transform evaluation');
-colormap('gray');
+colormap('colorcube');
 colorbar;
 caxis([-20 20]);
 

@@ -17,7 +17,7 @@ zvals = linspace(-2, 2, n_step);
 imagesc(zvals, zvals, abs(X));
 axis xy; axis square; grid on;
 title('|X(z)|, Z-transform evaluation');
-colormap('gray');
+colormap('colorcube');
 colorbar;
 caxis([-20 20]);
 

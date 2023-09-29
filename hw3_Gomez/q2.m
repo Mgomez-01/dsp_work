@@ -14,8 +14,8 @@ omega_values = linspace(0, pi, 100);
 z_values = arrayfun(@(omega) computeZTransformFunc(k_init, omega, h), omega_values);
 
 % Plot the initial data
+plot3_handle = plot(omega_values, abs(z_values), 'LineWidth', 2);
 %plot3_handle = plot(omega_values, abs(z_values), 'LineWidth', 2);
-plot3_handle = plot3(omega_values, real(z_values), imag(z_values), 'LineWidth', 2);
 xlabel('ω');
 ylabel('\itRe');
 zlabel('\itIm');
