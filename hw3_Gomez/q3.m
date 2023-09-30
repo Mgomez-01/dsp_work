@@ -2,8 +2,8 @@ a = 0.6;
 n = 0:999;
 x_n = a .^ n;
 
-minimum = -4;
-maximum = 4;
+minimum = -2;
+maximum = 2;
 step_size = .01;
 n_step = (maximum - minimum)/step_size + 1;
 f = linspace(minimum,maximum,(n_step));
