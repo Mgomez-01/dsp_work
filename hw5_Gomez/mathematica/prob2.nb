@@ -1,0 +1,315 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12384,        307]
+NotebookOptionsPosition[     11589,        285]
+NotebookOutlinePosition[     11982,        301]
+CellTagsIndexPosition[     11939,        298]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"ListPlot", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"10", "*", 
+         RowBox[{
+          RowBox[{"(", "0.6", ")"}], "^", 
+          RowBox[{"Mod", "[", 
+           RowBox[{
+            RowBox[{"n", "+", "modShift"}], ",", "nMAX"}], "]"}]}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n", ",", "0", ",", 
+          RowBox[{"nMAX", "-", "1"}]}], "}"}]}], "]"}], ",", 
+      RowBox[{"Filling", "->", "Axis"}], ",", 
+      RowBox[{"PlotStyle", "->", "Blue"}], ",", 
+      RowBox[{"AxesLabel", "->", 
+       RowBox[{"{", 
+        RowBox[{"\"\<n\>\"", ",", "\"\<Amplitude\>\""}], "}"}]}], ",", 
+      RowBox[{
+      "PlotLabel", "->", "\"\<Original Sequence x(n) = 10*(0.6)^n\>\""}]}], 
+     "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"nMAX", ",", "1", ",", "16", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"modShift", ",", "0", ",", "16", ",", "1"}], "}"}]}], "]"}], 
+  "\n"}]], "Input",
+ CellChangeTimes->{{3.9071171991575413`*^9, 3.907117199157693*^9}, {
+  3.907536756226748*^9, 3.907536838208365*^9}, {3.907536910924019*^9, 
+  3.907536938057644*^9}},
+ CellLabel->"In[91]:=",ExpressionUUID->"d146e2da-b9ea-405e-aaa3-6b4927eff9e9"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`modShift$$ = 12, $CellContext`nMAX$$ = 16, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`nMAX$$], 1, 16, 1}, {
+      Hold[$CellContext`modShift$$], 0, 16, 1}}, Typeset`size$$ = {
+    360., {124., 128.32483341468748`}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`modShift$$ = 0, $CellContext`nMAX$$ = 1}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ListPlot[
+        Table[
+        10 0.6^Mod[$CellContext`n + $CellContext`modShift$$, \
+$CellContext`nMAX$$], {$CellContext`n, 0, $CellContext`nMAX$$ - 1}], Filling -> 
+        Axis, PlotStyle -> Blue, AxesLabel -> {"n", "Amplitude"}, PlotLabel -> 
+        "Original Sequence x(n) = 10*(0.6)^n"], 
+      "Specifications" :> {{$CellContext`nMAX$$, 1, 16, 
+         1}, {$CellContext`modShift$$, 0, 16, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{406., {180.6875, 186.3125}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.907117200490884*^9, {3.907536779044509*^9, 3.907536795851059*^9}, {
+   3.90753691145669*^9, 3.907536940161059*^9}},
+ CellLabel->"Out[91]=",ExpressionUUID->"b5b4a931-1b21-46ce-ad5a-012386c3a2ee"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Manipulate", "[", 
+    RowBox[{
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"seq1", ",", "seq2", ",", "convolved"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"seq1", "=", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"10", "*", 
+            RowBox[{
+             RowBox[{"(", "0.6", ")"}], "^", 
+             RowBox[{"Mod", "[", 
+              RowBox[{
+               RowBox[{"n", "+", "modShift"}], ",", "nMAX"}], "]"}]}]}], ",", 
+           
+           RowBox[{"{", 
+            RowBox[{"n", ",", "0", ",", 
+             RowBox[{"nMAX", "-", "1"}]}], "}"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"seq2", "=", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"10", "*", 
+            RowBox[{
+             RowBox[{"(", "0.6", ")"}], "^", "n"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"n", ",", "0", ",", 
+             RowBox[{"nMAX", "-", "1"}]}], "}"}]}], "]"}]}], ";", 
+        RowBox[{"(*", 
+         RowBox[{"Example", " ", "second", " ", "sequence"}], "*)"}], 
+        RowBox[{"convolved", "=", 
+         RowBox[{"ListConvolve", "[", 
+          RowBox[{"seq1", ",", "seq2", ",", 
+           RowBox[{"{", 
+            RowBox[{"2", ",", 
+             RowBox[{"-", "2"}]}], "}"}], ",", "Cyclic"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"GraphicsGrid", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"ListPlot", "[", 
+              RowBox[{"seq1", ",", 
+               RowBox[{"Filling", "->", "Axis"}], ",", 
+               RowBox[{"PlotStyle", "->", "Blue"}], ",", 
+               RowBox[{"AxesLabel", "->", 
+                RowBox[{"{", 
+                 RowBox[{"\"\<n\>\"", ",", "\"\<Amplitude\>\""}], "}"}]}], 
+               ",", 
+               RowBox[{
+               "PlotLabel", "->", 
+                "\"\<Original Sequence x(n) = 10*(0.6)^n\>\""}]}], "]"}], ",", 
+             RowBox[{"ListPlot", "[", 
+              RowBox[{"seq2", ",", 
+               RowBox[{"Filling", "->", "Axis"}], ",", 
+               RowBox[{"PlotStyle", "->", "Red"}], ",", 
+               RowBox[{"AxesLabel", "->", 
+                RowBox[{"{", 
+                 RowBox[{"\"\<n\>\"", ",", "\"\<Amplitude\>\""}], "}"}]}], 
+               ",", 
+               RowBox[{"PlotLabel", "->", "\"\<Second Sequence\>\""}]}], 
+              "]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"ListPlot", "[", 
+             RowBox[{"convolved", ",", 
+              RowBox[{"Filling", "->", "Axis"}], ",", 
+              RowBox[{"PlotStyle", "->", "Purple"}], ",", 
+              RowBox[{"AxesLabel", "->", 
+               RowBox[{"{", 
+                RowBox[{"\"\<n\>\"", ",", "\"\<Amplitude\>\""}], "}"}]}], ",", 
+              RowBox[{"PlotLabel", "->", "\"\<Circular Convolution\>\""}]}], 
+             "]"}], "}"}]}], "}"}], "]"}]}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"nMAX", ",", "2", ",", "20", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"modShift", ",", "0", ",", "10", ",", "1"}], "}"}]}], "]"}], 
+   "\n", "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.907117206805338*^9, 3.9071172068055067`*^9}, {
+  3.907537126956069*^9, 3.907537142312035*^9}, {3.907537181482242*^9, 
+  3.907537193739662*^9}, {3.907537341471137*^9, 3.907537358199635*^9}, {
+  3.907537465761053*^9, 3.907537466055231*^9}, {3.9075375654679537`*^9, 
+  3.907537581385003*^9}},
+ CellLabel->
+  "In[100]:=",ExpressionUUID->"66f34b62-51a8-45ed-a8ea-1177a5a0adf8"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`modShift$$ = 0, $CellContext`nMAX$$ = 14, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`nMAX$$], 2, 20, 1}, {
+      Hold[$CellContext`modShift$$], 0, 10, 1}}, Typeset`size$$ = {
+    360., {109., 113.4922359499621}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`modShift$$ = 0, $CellContext`nMAX$$ = 2}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`seq1$, $CellContext`seq2$, \
+$CellContext`convolved$}, $CellContext`seq1$ = 
+         Table[10 
+           0.6^Mod[$CellContext`n + $CellContext`modShift$$, \
+$CellContext`nMAX$$], {$CellContext`n, 0, $CellContext`nMAX$$ - 
+            1}]; $CellContext`seq2$ = 
+         Table[10 
+           0.6^$CellContext`n, {$CellContext`n, 0, $CellContext`nMAX$$ - 
+            1}]; $CellContext`convolved$ = 
+         ListConvolve[$CellContext`seq1$, $CellContext`seq2$, {
+           2, -2}, $CellContext`Cyclic]; GraphicsGrid[{{
+            
+            ListPlot[$CellContext`seq1$, Filling -> Axis, PlotStyle -> Blue, 
+             AxesLabel -> {"n", "Amplitude"}, PlotLabel -> 
+             "Original Sequence x(n) = 10*(0.6)^n"], 
+            
+            ListPlot[$CellContext`seq2$, Filling -> Axis, PlotStyle -> Red, 
+             AxesLabel -> {"n", "Amplitude"}, PlotLabel -> 
+             "Second Sequence"]}, {
+            
+            ListPlot[$CellContext`convolved$, Filling -> Axis, PlotStyle -> 
+             Purple, AxesLabel -> {"n", "Amplitude"}, PlotLabel -> 
+             "Circular Convolution"]}}]], 
+      "Specifications" :> {{$CellContext`nMAX$$, 2, 20, 
+         1}, {$CellContext`modShift$$, 0, 10, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{406., {165.6875, 171.3125}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.907117207484116*^9, {3.907537136546052*^9, 3.907537147068124*^9}, 
+   3.907537195807805*^9, {3.90753735130521*^9, 3.907537381557777*^9}, 
+   3.907537448362157*^9, {3.907537521465073*^9, 3.907537537278145*^9}, {
+   3.9075375690341263`*^9, 3.907537581940589*^9}},
+ CellLabel->
+  "Out[100]=",ExpressionUUID->"08d7de89-fd78-4332-93a4-fd8953ca6fee"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\n", 
+  RowBox[{"ListPlot", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"10", "*", 
+       RowBox[{
+        RowBox[{"(", "0.6", ")"}], "^", 
+        RowBox[{"Mod", "[", 
+         RowBox[{
+          RowBox[{"n", "-", "6"}], ",", "16"}], "]"}]}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"n", ",", "0", ",", "15"}], "}"}]}], "]"}], ",", 
+    RowBox[{"Filling", "->", "Axis"}], ",", 
+    RowBox[{"PlotStyle", "->", "Red"}], ",", 
+    RowBox[{"AxesLabel", "->", 
+     RowBox[{"{", 
+      RowBox[{"\"\<n\>\"", ",", "\"\<Amplitude\>\""}], "}"}]}], ",", 
+    RowBox[{
+    "PlotLabel", "->", 
+     "\"\<Shifted and Periodic Sequence x((n - 6))_{16}\>\""}]}], 
+   "]"}]}]], "Input",ExpressionUUID->"cce47ba7-280d-4a89-8663-366eba1751a9"]
+},
+WindowSize->{1920, 1056},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.2 for Linux x86 (64-bit) (January 31, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"ceab8c57-2bdf-4c01-ad53-39cb19119ea1"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 1268, 33, 54, "Input",ExpressionUUID->"d146e2da-b9ea-405e-aaa3-6b4927eff9e9"],
+Cell[1851, 57, 2120, 42, 386, "Output",ExpressionUUID->"b5b4a931-1b21-46ce-ad5a-012386c3a2ee"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4008, 104, 3666, 89, 184, "Input",ExpressionUUID->"66f34b62-51a8-45ed-a8ea-1177a5a0adf8"],
+Cell[7677, 195, 3110, 63, 356, "Output",ExpressionUUID->"08d7de89-fd78-4332-93a4-fd8953ca6fee"]
+}, Open  ]],
+Cell[10802, 261, 783, 22, 53, "Input",ExpressionUUID->"cce47ba7-280d-4a89-8663-366eba1751a9"]
+}
+]
+*)
+
