@@ -4,7 +4,7 @@ from math import e, pi
 from rich import print
 import numpy as np
 from numpy.fft import fft
-
+from clifford import g3c
 
 # prob1 from HW5 used this example sequence. using it for testing
 n_min = 0
@@ -29,7 +29,8 @@ X_clifford = np.zeros(len(n), dtype=object)
 for k in range(N):
     for n_idx, n_val in enumerate(n):
         angle = -2 * np.pi * k * n_val / N
-        basis_blade = np.cos(angle) + e1*e2*e3*np.sin(angle)
+        # in clifford, e12 == i or j 
+        basis_blade = np.cos(angle) + e12*np.sin(angle)
         X_clifford[k] += x_n[n_idx] * basis_blade
 
 
@@ -48,10 +49,10 @@ X_standard = fft(x_n)
 # print(com_val)
 
 
-# go through each of the above and exit if there is a disagreement between methods
+# go through each of the above and exit with failure if there is a disagreement between methods
 for k in range(0, len(X_standard)):
     val1_real = X_clifford_complex[k][0]
-    val1_imag = X_clifford_complex[k][e123]
+    val1_imag = X_clifford_complex[k][e12]
     val2_real = np.real(X_standard[k])
     val2_imag = np.imag(X_standard[k])
     print(f"X_clifford_complex_real : {val1_real}")
@@ -65,6 +66,10 @@ for k in range(0, len(X_standard)):
     print(f"comparing: {test_real}")
     print(f"comparing: {test_imag}")
     if not test_real:
-        print(f"failure at test_real: {test_real}\nval2 not close enough to val1\n")
+        print(f"[bold red]failure[/bold red] at test_real: {test_real}\nval2 not close enough to val1\n")
+    else:
+        print("[bold green]successful![/bold green]")
     if not test_imag:
-        print(f"failure at test_imag: {test_real}\nval2 not close enough to val1\n")
+        print(f"[bold red]failure[/bold red] at test_imag: {test_real}\nval2 not close enough to val1\n")
+    else:
+        print("[bold green]successful![/bold green]")
